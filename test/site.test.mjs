@@ -5,8 +5,8 @@ import { test } from 'node:test';
 const origin = 'https://fundacionaura.org.ar';
 const output = new URL('../dist/', import.meta.url);
 const sitePages = [
-  { path: '/', file: 'index.html', lang: 'es-AR', otherPath: '/en/', otherLang: 'en', label: 'Datos institucionales' },
-  { path: '/en/', file: 'en/index.html', lang: 'en', otherPath: '/', otherLang: 'es-AR', label: 'Organization details' },
+  { path: '/', file: 'index.html', lang: 'es-AR', otherPath: '/en/', otherLang: 'en', label: 'Datos institucionales', addressLabel: 'Dirección física' },
+  { path: '/en/', file: 'en/index.html', lang: 'en', otherPath: '/', otherLang: 'es-AR', label: 'Organization details', addressLabel: 'Physical address' },
 ];
 
 for (const page of sitePages) {
@@ -32,7 +32,10 @@ for (const page of sitePages) {
     assert.ok(html.includes(page.label));
     assert.ok(html.includes('30-71964630-8'));
     assert.ok(html.includes('317/2026-DPJ'));
-    assert.ok(html.includes('San Miguel de Tucumán, Tucumán, Argentina'));
+    const address = new RegExp(
+      '<dt\\b[^>]*>' + page.addressLabel + '</dt>\\s*<dd\\b[^>]*>9 de Julio 1205, San Miguel de Tucumán, Tucumán, Argentina</dd>',
+    );
+    assert.match(html, address);
     assert.ok(html.includes('mailto:contacto@fundacionaura.org.ar'));
 
     const images = [...html.matchAll(/(?:src|href)="(\/imagenes\/[^"]+)"/g)];

@@ -12,7 +12,7 @@ const copy = {
     official: 'Este es el sitio web oficial de Fundación AURA.',
     taxId: 'CUIT',
     registration: 'Resolución de inscripción',
-    location: 'Localidad',
+    address: 'Dirección física',
     contact: 'Correo electrónico',
   },
   en: {
@@ -20,7 +20,7 @@ const copy = {
     official: 'This is the official website of Fundación AURA.',
     taxId: 'Tax ID (CUIT)',
     registration: 'Registration resolution',
-    location: 'Location',
+    address: 'Physical address',
     contact: 'Email',
   },
 }[locale];
@@ -39,7 +39,7 @@ const copy = {
       <dl>
         <div><dt>{copy.taxId}</dt><dd>{site.taxId}</dd></div>
         <div><dt>{copy.registration}</dt><dd>{site.registration}</dd></div>
-        <div><dt>{copy.location}</dt><dd>{site.location}, Argentina</dd></div>
+        <div><dt>{copy.address}</dt><dd>{site.address}</dd></div>
         <div><dt>{copy.contact}</dt><dd><a href={'mailto:' + site.email}>{site.email}</a></dd></div>
       </dl>
     </div>
