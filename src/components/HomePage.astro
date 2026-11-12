@@ -2,6 +2,7 @@
 import FoundationSections from './FoundationSections.astro';
 import { foundation } from '../content/foundation';
 import SiteLayout from '../layouts/SiteLayout.astro';
+import SiteFooter from './SiteFooter.astro';
 import { home, locales, routes, site, type Locale } from '../content/site';
 
 interface Props {
@@ -14,7 +15,7 @@ const sections = foundation[locale];
 const nav = [
   ['#proposito', sections.purpose.label],
   ['#programas', sections.programs.label],
-  ['#alianzas', sections.partnerships.label],
+  ['#alianzas', locale === 'en' ? 'Partners' : sections.partnerships.label],
   ['#participar', sections.participation.label],
   ['#equipo', sections.team.label],
 ];
@@ -66,4 +67,5 @@ const nav = [
     </section>
     <FoundationSections locale={locale} />
   </main>
+  <SiteFooter locale={locale} />
 </SiteLayout>

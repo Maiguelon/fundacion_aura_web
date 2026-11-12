@@ -7,6 +7,7 @@ export const site = {
   email: 'contacto@fundacionaura.org.ar',
   taxId: '30-71964630-8',
   registration: '317/2026-DPJ',
+  location: 'San Miguel de Tucumán, Tucumán',
 } as const;
 
 export const routes = {

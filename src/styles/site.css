@@ -1,4 +1,5 @@
 @layer base, layout, sections;
+@import './foundation.css';
 
 @layer base {
   :root {
