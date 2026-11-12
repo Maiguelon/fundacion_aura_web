@@ -1,0 +1,46 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { home, locales, routes, site, type Locale } from '../content/site';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const copy = home[locale];
+---
+
+<SiteLayout locale={locale}>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="wordmark" href={routes[locale]}>{site.name}</a>
+      <nav class="language-nav" aria-label={copy.languageNavigation}>
+        {locales.map((language) => (
+          <a href={routes[language]} lang={home[language].language} hreflang={home[language].language}
+            aria-label={language === 'es' ? 'Español' : 'English'}
+            aria-current={language === locale ? 'page' : undefined}>
+            {language.toUpperCase()}
+          </a>
+        ))}
+      </nav>
+    </div>
+  </header>
+  <main id="contenido" tabindex="-1">
+    <section class="hero shell" aria-labelledby="hero-heading">
+      <div class="hero-copy">
+        <p class="eyebrow">{copy.disciplines}</p>
+        <h1 id="hero-heading">
+          {copy.headline[0]}<br />
+          {copy.headline[1]}<br />
+          <em>{copy.headline[2]}</em>
+        </h1>
+        <p class="hero-lead">{copy.lead}</p>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <span class="print-circle"></span>
+        <span class="print-cutout"></span>
+        <span class="print-square"></span>
+      </div>
+    </section>
+  </main>
+</SiteLayout>
