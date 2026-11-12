@@ -26,7 +26,7 @@ export const home = {
     lead: 'Promovemos la expresión artística en espacios educativos y comunitarios. Creemos en el arte como herramienta de desarrollo personal, social y cultural.',
     programsLink: 'Explorá los programas',
     participateLink: 'Cómo participar',
-    imageAlt: 'Personas trabajando juntas alrededor de una mesa',
+    imageAlt: 'Manos, pinceles y pinturas en una mesa de trabajo',
     imageCaption: 'Un espacio para crear en comunidad',
   },
   en: {
@@ -40,7 +40,7 @@ export const home = {
     lead: 'We promote artistic expression in educational and community settings. We believe art can help people, communities and culture thrive.',
     programsLink: 'Explore our programs',
     participateLink: 'Get involved',
-    imageAlt: 'People working together around a table',
+    imageAlt: 'Hands, brushes and paints on a worktable',
     imageCaption: 'A space to create together',
   },
 } as const;

@@ -85,8 +85,13 @@ const emailLink = 'mailto:' + site.email;
     <ul class="people">
       {copy.team.people.map((person) => (
         <li>
-          <div><p class="eyebrow">{person.role}</p><h3>{person.name}</h3></div>
-          <p>{person.bio}</p>
+          <img src={'/imagenes/' + person.portrait + '.webp'} alt="" width="544" height="416"
+            loading="lazy" decoding="async" />
+          <div>
+            <p class="eyebrow">{person.role}</p>
+            <h3>{person.name}</h3>
+            <p>{person.bio}</p>
+          </div>
         </li>
       ))}
     </ul>

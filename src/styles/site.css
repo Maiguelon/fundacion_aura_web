@@ -6,6 +6,7 @@
     --blue: #315cf4;
     --blue-dark: #173cb8;
     --yellow: #ffd64f;
+    --red: #ff5959;
     --paper: #f7f5ee;
     --paper-dark: #efeee8;
     --rule: #c5c2b7;
@@ -58,12 +59,12 @@
   }
 
   .wordmark {
-    font-size: 1.15rem;
-    font-weight: 800;
-    letter-spacing: -0.04em;
-    text-decoration: none;
-    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
   }
+
+  .wordmark img { width: clamp(7rem, 11vw, 9.5rem); }
 
   .language-nav { display: flex; gap: 0.15rem; align-items: center; }
 
@@ -122,38 +123,44 @@
   }
 
   .hero-art {
+    max-width: 31rem;
+    width: 100%;
+    justify-self: end;
+  }
+
+  .photo-mat {
     position: relative;
     isolation: isolate;
-    overflow: hidden;
-    aspect-ratio: 0.94;
+    padding: clamp(0.55rem, 1.5vw, 1.2rem);
+    margin: 0 0.7rem 0.8rem 0;
     background: var(--yellow);
+    box-shadow: 0.7rem 0.7rem var(--blue);
   }
 
-  .hero-art span { position: absolute; }
-
-  .print-circle {
-    inset: 9% 8% auto auto;
-    width: 75%;
+  .photo-mat::after {
+    position: absolute;
+    top: -1.05rem;
+    right: -0.95rem;
+    width: clamp(2.75rem, 6vw, 5.2rem);
     aspect-ratio: 1;
-    border-radius: 50% 48% 48% 50%;
-    background: var(--blue);
+    border-radius: 49% 51% 47% 52%;
+    background: var(--red);
+    content: "";
+    transform: rotate(12deg);
   }
 
-  .print-cutout {
-    width: 58%;
-    height: 58%;
-    inset: auto auto -10% -3%;
-    transform: rotate(-14deg);
-    background: var(--paper);
+  .photo-mat img {
+    width: 100%;
+    aspect-ratio: 0.88;
+    object-fit: cover;
+    object-position: center 52%;
+    background: var(--paper-dark);
   }
 
-  .print-square {
-    width: 37%;
-    height: 49%;
-    inset: auto 2% 3% auto;
-    transform: rotate(18deg);
-    background: var(--ink);
-    mix-blend-mode: multiply;
+  .hero-art figcaption {
+    padding-top: 0.72rem;
+    font-size: 0.82rem;
+    color: #504c43;
   }
 }
 
@@ -166,7 +173,8 @@
   .header-inner { min-height: 4rem; }
   .hero { grid-template-columns: 1fr; gap: 2rem; padding-block: 3.2rem; }
   .hero h1 { font-size: clamp(3.25rem, 10.6vw, 6rem); }
-  .hero-art { aspect-ratio: 1.25; }
+  .hero-art { max-width: none; justify-self: start; }
+  .photo-mat img { aspect-ratio: 1.1; }
 }
 
 @layer layout {
@@ -210,6 +218,6 @@
 
 @media (max-width: 49rem) {
   .header-inner { display: grid; grid-template-columns: 1fr auto; gap: 0; padding-top: 0.4rem; }
-  .main-nav { grid-row: 2; grid-column: 1 / -1; justify-content: flex-start; border-top: 1px solid var(--rule); }
-  .main-nav a { font-size: 0.82rem; }
+  .main-nav { grid-row: 2; grid-column: 1 / -1; justify-content: space-between; gap: 0 0.4rem; border-top: 1px solid var(--rule); }
+  .main-nav a { font-size: clamp(0.72rem, 3.15vw, 0.82rem); }
 }

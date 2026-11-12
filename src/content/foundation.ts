@@ -1,11 +1,11 @@
 import type { Locale } from './site';
 
 const people = [
-  'Eliana Victoria Carretero',
-  'Nadia Acosta',
-  'Anahí Granillo',
-  'Ruth Rojas',
-  'Liliana Farit Coca Lazo',
+  { name: 'Eliana Victoria Carretero', portrait: 'eliana' },
+  { name: 'Nadia Acosta', portrait: 'nadia' },
+  { name: 'Anahí Granillo', portrait: 'anahi' },
+  { name: 'Ruth Rojas', portrait: 'ruth' },
+  { name: 'Liliana Farit Coca Lazo', portrait: 'liliana' },
 ] as const;
 
 type Entry = { title: string; body: string };
@@ -18,7 +18,7 @@ interface FoundationCopy {
   partnerships: Entry & { label: string };
   opportunity: Entry & { label: string; action: string };
   participation: Entry & { label: string; items: Entry[]; action: string };
-  team: { label: string; title: string; people: { name: string; role: string; bio: string }[] };
+  team: { label: string; title: string; people: { name: string; portrait: string; role: string; bio: string }[] };
   note: string;
 }
 
@@ -86,11 +86,11 @@ export const foundation = {
       label: 'Equipo',
       title: 'Quiénes hacen AURA',
       people: [
-        { name: people[0], role: 'Presidenta', bio: 'Diseñadora gráfica y profesora de Artes Visuales. Impulsa la dirección institucional y desarrolla propuestas que integran el arte, la educación y la comunicación visual.' },
-        { name: people[1], role: 'Secretaria', bio: 'Profesora de Artes Visuales con trayectoria en educación primaria y trabajo en comunidades en situación de vulnerabilidad. Promueve propuestas artísticas adaptadas a distintas realidades sociales.' },
-        { name: people[2], role: 'Tesorera', bio: 'Profesora de Artes Visuales y promotora barrial de la Dirección de Gestión Cultural de la Secretaría de Cultura. Trabaja en el vínculo entre cultura y comunidad.' },
-        { name: people[3], role: 'Vocal', bio: 'Profesora de Artes Visuales con experiencia en el interior de la provincia. Su trabajo busca ampliar el acceso a experiencias artísticas y educativas en distintos territorios.' },
-        { name: people[4], role: 'Vocal', bio: 'Profesora de Artes Visuales en escuelas rurales y aulas plurigrado. Aporta su experiencia en educación rural al trabajo de AURA por el acceso a la educación artística.' },
+        { ...people[0], role: 'Presidenta', bio: 'Diseñadora gráfica y profesora de Artes Visuales. Impulsa la dirección institucional y desarrolla propuestas que integran el arte, la educación y la comunicación visual.' },
+        { ...people[1], role: 'Secretaria', bio: 'Profesora de Artes Visuales con trayectoria en educación primaria y trabajo en comunidades en situación de vulnerabilidad. Promueve propuestas artísticas adaptadas a distintas realidades sociales.' },
+        { ...people[2], role: 'Tesorera', bio: 'Profesora de Artes Visuales y promotora barrial de la Dirección de Gestión Cultural de la Secretaría de Cultura. Trabaja en el vínculo entre cultura y comunidad.' },
+        { ...people[3], role: 'Vocal', bio: 'Profesora de Artes Visuales con experiencia en el interior de la provincia. Su trabajo busca ampliar el acceso a experiencias artísticas y educativas en distintos territorios.' },
+        { ...people[4], role: 'Vocal', bio: 'Profesora de Artes Visuales en escuelas rurales y aulas plurigrado. Aporta su experiencia en educación rural al trabajo de AURA por el acceso a la educación artística.' },
       ],
     },
     note: 'Todas las actividades de Fundación AURA están a cargo de profesionales idóneos o de personal habilitado cuando la actividad lo requiere.',
@@ -158,11 +158,11 @@ export const foundation = {
       label: 'Team',
       title: 'The people behind AURA',
       people: [
-        { name: people[0], role: 'President', bio: 'A graphic designer and visual arts teacher, she leads the foundation and develops projects that bring together art, education and visual communication.' },
-        { name: people[1], role: 'Secretary', bio: 'A visual arts teacher with experience in primary education and in underserved communities, she adapts arts programs to different community contexts.' },
-        { name: people[2], role: 'Treasurer', bio: 'A visual arts teacher and neighborhood outreach worker with the Secretariat of Culture, she helps connect cultural programs with their communities.' },
-        { name: people[3], role: 'Board member', bio: 'A visual arts teacher with experience outside the provincial capital, she works to widen access to arts and educational opportunities in different communities.' },
-        { name: people[4], role: 'Board member', bio: 'A visual arts teacher in rural schools and multigrade classrooms, she brings rural education experience to AURA’s work on access to the arts.' },
+        { ...people[0], role: 'President', bio: 'A graphic designer and visual arts teacher, she leads the foundation and develops projects that bring together art, education and visual communication.' },
+        { ...people[1], role: 'Secretary', bio: 'A visual arts teacher with experience in primary education and in underserved communities, she adapts arts programs to different community contexts.' },
+        { ...people[2], role: 'Treasurer', bio: 'A visual arts teacher and neighborhood outreach worker with the Secretariat of Culture, she helps connect cultural programs with their communities.' },
+        { ...people[3], role: 'Board member', bio: 'A visual arts teacher with experience outside the provincial capital, she works to widen access to arts and educational opportunities in different communities.' },
+        { ...people[4], role: 'Board member', bio: 'A visual arts teacher in rural schools and multigrade classrooms, she brings rural education experience to AURA’s work on access to the arts.' },
       ],
     },
     note: 'Fundación AURA activities are led by qualified professionals or licensed personnel where required.',
