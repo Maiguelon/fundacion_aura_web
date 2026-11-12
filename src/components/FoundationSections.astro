@@ -1,0 +1,95 @@
+---
+import { foundation } from '../content/foundation';
+import { site, type Locale } from '../content/site';
+import '../styles/foundation.css';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const copy = foundation[locale];
+const emailLink = 'mailto:' + site.email;
+---
+
+<section class="purpose shell section-space" id="proposito" aria-labelledby="purpose-heading">
+  <p class="eyebrow">{copy.purpose.label}</p>
+  <div class="section-intro">
+    <h2 id="purpose-heading">{copy.purpose.title}</h2>
+    <p>{copy.purpose.body}</p>
+  </div>
+</section>
+
+<section class="programs section-space" id="programas" aria-labelledby="programs-heading">
+  <div class="shell">
+    <p class="eyebrow">{copy.programs.label}</p>
+    <div class="section-intro">
+      <h2 id="programs-heading">{copy.programs.title}</h2>
+      <p>{copy.programs.body}</p>
+    </div>
+    <ul class="program-list">
+      {copy.programs.items.map((item) => (
+        <li>
+          <span class="program-mark" aria-hidden="true"></span>
+          <h3>{item.title}</h3>
+          <p>{item.body}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<section class="focus shell section-space" aria-labelledby="focus-heading">
+  <h2 id="focus-heading">{copy.focus.title}</h2>
+  <ul class="focus-list">
+    {copy.focus.items.map((item) => (
+      <li><h3>{item.title}</h3><p>{item.body}</p></li>
+    ))}
+  </ul>
+</section>
+
+<section class="partnerships section-space" id="alianzas" aria-labelledby="partnerships-heading">
+  <div class="shell partnerships-grid">
+    <div class="partnerships-copy">
+      <p class="eyebrow">{copy.partnerships.label}</p>
+      <h2 id="partnerships-heading">{copy.partnerships.title}</h2>
+      <p>{copy.partnerships.body}</p>
+    </div>
+    <aside class="opportunity" aria-labelledby="opportunity-heading">
+      <p class="eyebrow">{copy.opportunity.label}</p>
+      <h3 id="opportunity-heading">{copy.opportunity.title}</h3>
+      <p>{copy.opportunity.body}</p>
+      <a class="text-link" href={emailLink}>{copy.opportunity.action} <span aria-hidden="true">↗</span></a>
+    </aside>
+  </div>
+</section>
+
+<section class="participation shell section-space" id="participar" aria-labelledby="participation-heading">
+  <p class="eyebrow">{copy.participation.label}</p>
+  <div class="section-intro">
+    <h2 id="participation-heading">{copy.participation.title}</h2>
+    <p>{copy.participation.body}</p>
+  </div>
+  <ul class="focus-list">
+    {copy.participation.items.map((item) => (
+      <li><h3>{item.title}</h3><p>{item.body}</p></li>
+    ))}
+  </ul>
+  <a class="solid-link" href={emailLink}>{copy.participation.action} <span aria-hidden="true">↗</span></a>
+</section>
+
+<section class="team section-space" id="equipo" aria-labelledby="team-heading">
+  <div class="shell">
+    <p class="eyebrow">{copy.team.label}</p>
+    <h2 id="team-heading">{copy.team.title}</h2>
+    <ul class="people">
+      {copy.team.people.map((person) => (
+        <li>
+          <div><p class="eyebrow">{person.role}</p><h3>{person.name}</h3></div>
+          <p>{person.bio}</p>
+        </li>
+      ))}
+    </ul>
+    <p class="institutional-note">{copy.note}</p>
+  </div>
+</section>
